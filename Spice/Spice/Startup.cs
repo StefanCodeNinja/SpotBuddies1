@@ -41,7 +41,7 @@ namespace Spice
 
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
-            //configure Email Sender
+            //configure Email Sender for sending emails
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
             
