@@ -41,6 +41,7 @@ namespace SpotBuddies
 
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
+
             //configure Email Sender for sending emails
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration);
