@@ -1,0 +1,14 @@
+Email service:
+https://app.sendgrid.com/login?redirect_to=%2Faccount%2Fproducts
+
+u: s.kanchev@protonmail.com
+p: adnroichetichko
+
+Payment service:
+u: proton
+p: Andr meti $
+
+
+Superhosting
+u: proton
+p: Sparc $

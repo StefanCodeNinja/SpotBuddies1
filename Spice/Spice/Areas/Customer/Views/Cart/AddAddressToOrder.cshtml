@@ -1,0 +1,152 @@
+﻿@model Spice.Models.ViewModels.OrderDetailsCart
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form>
+    @if (Model.listCart.Count > 0)
+    {
+        <br />
+        <input itemid="userId" asp-for="@Model.listCart[0].ApplicationUserId" hidden />
+        <div class="backgroundWhiteBorder" style="border:1px solid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="container">
+                <div class="card" style="border:1px solid groove">
+                    <div class="card-header bg-dark text-light ml-0 row container" style="border:1px solid red">
+                        <div class="col-6">
+                            <i class="fas fa-map-marked-alt"></i> &nbsp;
+                            Add Address
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="btn btn-outline-info btn-sm">Back To Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container rounded p-2">
+                        <div class="col-12 col-lg-6 pb-4">
+                            <div class="row">
+                                <h4 class=" d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-info">Recipient Details</span>
+                                </h4>
+                            </div>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>First Name</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.FirstName" id="txtFirstName" type="text" class="form-control" placeholder="Name ... "/>
+                                    <span asp-validation-for="@Model.OrderHeader.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Family Name</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.LastName" id="txtFamilyName" type="text" class="form-control" placeholder="Family ... " />
+                                    <span asp-validation-for="@Model.OrderHeader.LastName" class="text-danger mt-2"></span>
+                                </div>
+                            </div>
+
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.PhoneNumber" id="txtPhone" type="text" class="form-control"  placeholder="Phone ... "/>
+                                    <span asp-validation-for="@Model.OrderHeader.PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h4 class=" d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-info">Please sent the items to Address</span>
+                                </h4>
+                            </div>
+
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Street</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryStreet" id="txtStreet" type="text" class="form-control" placeholder="Street..."/>
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryStreet" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Street No:</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryStreetNumber" id="txtStreetNbr" type="text" class="form-control" placeholder="Street number ..."/>
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryStreetNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Postcode</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryPostalCode" id="txtPostcode" type="text" class="form-control" placeholder="Post code ..." />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryPostalCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>City</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryCity" id="txtCity" type="text" class="form-control" placeholder="City ..."/>
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryCity" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Country</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryCountry" id="txtCountry" type="text" class="form-control" placeholder="Contry ..." />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryCountry" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Add Comments</label>
+                                </div>
+                                <div class="col-8">
+                                    <textarea asp-for="@Model.OrderHeader.Comments" style="height:100px;" class="form-control" placeholder="Comments ..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-3 col-md-3 offset-0">
+                            <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="btn btn-dark form-control">Back</a>
+                        </div>
+                        <div class="col-6 offset-3">
+                            <button type="submit" class="btn btn-success form-control" asp-action="Summary" asp-area="Customer" asp-controller="Cart">Next to Overview</button>
+
+                      @*      <a asp-action="Summary" asp-area="Customer" asp-controller="Cart" onclick="return validateInput()" class="btn btn-success form-control">Go to Oberview</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="backgroundWhiteBorder">No items added to the shopping cart...</div>
+    }
+</form>
+
+@section Scripts{
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

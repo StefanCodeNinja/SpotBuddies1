@@ -1,0 +1,87 @@
+﻿@model Spice.Models.Coupon
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info text-white-50">Details Coupon</h2>
+<br />
+<form enctype="multipart/form-data">
+    <div class="border backgroundWhite">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" disabled />
+            </div>
+            <span asp-validation-for="Name" class="text-danger" />
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Picture" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="file" id="projectImage" name="files" multiple class="form-control" disabled />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="CouponType" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="CouponType" asp-items="Html.GetEnumSelectList<Coupon.ECouponType>()" class="form-control" disabled></select>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Discount" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Discount" class="form-control" disabled />
+            </div>
+            <span asp-validation-for="Discount" class="text-danger" />
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="MinimumAmount" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="MinimumAmount" class="form-control" disabled />
+            </div>
+            <span asp-validation-for="MinimumAmount" class="text-danger" />
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="IsActive" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input type="checkbox" asp-for="IsActive" class="form-control" disabled />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DetailsBackToListButton" model="Model.Id" />
+            </div>
+        </div>
+
+
+    </div>
+</form>

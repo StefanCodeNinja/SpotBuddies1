@@ -1,0 +1,132 @@
+﻿@model Spice.Models.ViewModels.MenuItemViewModel
+@*it is needed for the dropdowns in the view*@
+@using Spice.Extensions
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="border backgroundWhite">
+
+        <br />
+        <h2 class="text-info">Details Menu Item</h2>
+        <br />
+        <input type="hidden" asp-for="MenuItem.Id" />
+
+        <div class="row">
+            <div class="col-8">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MenuItem.Name" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="MenuItem.Name" readonly class="form-control" />
+                    </div>
+                    <span asp-validation-for="MenuItem.Name" class="text-danger" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MenuItem.Description" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.TextAreaFor(m => m.MenuItem.Description)
+                    </div>
+                    <span asp-validation-for="MenuItem.Description" class="text-danger" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MenuItem.Price" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="MenuItem.Price" readonly class="form-control" />
+                    </div>
+                    <span asp-validation-for="MenuItem.Price" class="text-danger" />
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MenuItem.CategoryId" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="MenuItem.Category.Name" readonly class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MenuItem.SubCategoryId" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="MenuItem.SubCategory.Name" readonly class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="MenuItem.Spicyness" class="col-form-lable"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <img src="@Model.MenuItem.Image" width="100%" style="border-radius: 5px; border: 1px #999b9b;" />
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DetailsBackToListButton" model="Model.MenuItem.Id" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format',
+            readonly: '1',
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getSubCategory();
+            $('#CategoryId').change(function () {
+                getSubCategory();
+        });
+    });
+
+
+    function getSubCategory() {
+        var url = '@Url.Content("~/")' + "Admin/SubCategory/GetSubCategory";
+        var ddlsoruce = '#CategoryId';
+        $.getJSON(url, { id: $(ddlsoruce).val() }, function (data) {
+            var items = '';
+            $('#SubCategoryId').empty();
+            $.each(data, function (i, subcategory) {
+                items += "<option value='" + subcategory.value + "'>" + subcategory.text + "</option>";
+            });
+
+            $('#SubCategoryId').html(items);
+
+        })
+    }
+    </script>
+
+}

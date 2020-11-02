@@ -1,0 +1,239 @@
+﻿@model Spice.Models.ViewModels.OrderDetailsCart
+@using Microsoft.Extensions.Options
+
+@*insert spripe setting into the this page*@
+
+@inject IOptions<Spice.Utility.StripeSettings> Stripe
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    @if (Model.listCart.Count > 0)
+    {
+        <br />
+        <input itemid="userId" asp-for="@Model.listCart[0].ApplicationUserId" hidden />
+        <div class="backgroundWhiteBorder" style="border:1px solid">
+            <div class="container">
+
+                <div class="card" style="border:1px solid groove">
+                    <div class="card-header bg-dark text-light ml-0 row container">
+                        <div class="col-6">
+                            <i class="fas fa-shopping-cart"></i> &nbsp;
+                            Order Summary
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-area="Customer" asp-controller="Cart" asp-action="AddAddressToOrder" class="btn btn-outline-info btn-sm">Back To Address</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            @* model only / all*@
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                            <div class="row my-1">
+                                <h4 class=" d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-info">Recipient Details</span>
+                                </h4>
+                            </div>
+
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>First name</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.FirstName" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Family name</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.LastName" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.LastName" class="text-danger mt-2"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Contact phone</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.PhoneNumber" type="text" disabled class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>                
+
+                            <div class="row">
+                                <h4 class=" d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-info">Send to Address</span>
+                                </h4>
+                            </div>
+
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Street</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryStreet" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryStreet" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Street No:</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryStreetNumber" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryStreetNumber" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Postcode</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryPostalCode" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryPostalCode" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>City</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryCity" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryCity" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Country</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="@Model.OrderHeader.DeliveryCountry" type="text" class="form-control" disabled />
+                                    <span asp-validation-for="@Model.OrderHeader.DeliveryCountry" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="row my-1">
+                                <div class="col-4">
+                                    <label>Add Comments</label>
+                                </div>
+                                <div class="col-8">
+                                    <textarea asp-for="@Model.OrderHeader.Comments" style="height:100px; background-color:white;" class="form-control"></textarea>
+                                    <h6>@Model.OrderHeader.Comments</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+
+                            <h4 class=" d-flex justify-content-between align-items-center mb-4">
+                                <span class="text-info mt-2">Basket Summary</span>
+                            </h4>
+                            <ul class="list-group mb-3">
+                                @{ var total = 0.0; }
+                                @foreach (var details in Model.listCart)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="my-0">@details.MenuItem.Name</h6>
+                                            <small class="test-muted">Quantity: @details.Count</small>
+                                        </div>
+                                        <span class="text-muted">$@(details.MenuItem.Price * @details.Count)</span>
+                                        @{ total += (details.MenuItem.Price * details.Count); }
+                                    </li>
+                                }
+                                @if (Model.OrderHeader.CouponCode != null)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <div class="text-success">
+                                            <h6 class="my-0">Promo Code</h6>
+                                            <small class="text-muted">@Model.OrderHeader.CouponCode</small>
+                                        </div>
+                                        <span class="text-success">-$@(total - Model.OrderHeader.OrderTotal)</span>
+                                    </li>
+                                }
+                                <li class="list-group-item d-flex justify-content-between">
+
+                                    <small class="text-muted">Тотал лв.</small>
+                                    <span class="text-success">$@(Model.OrderHeader.OrderTotal)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="container rounded p-2">
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-3 col-md-3 offset-0">
+                            <a asp-area="Customer" asp-controller="Cart" asp-action="AddAddressToOrder" class="btn btn-dark form-control">Back</a>
+                        </div>
+                        <div class="col-6 offset-3">
+
+                            @{
+                                var OrderTotalForStripe = Model.OrderHeader.OrderTotal * 100;
+                            }
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="@Stripe.Value.PublishableKey"
+                                    data-amount="@OrderTotalForStripe"
+                                    data-name="Spice Rest"
+                                    data-lable="Place Order"
+                                    data-description="Good Food, Good Mood."
+                                    data-locale="auto"
+                                    data-allow-remember-me="false"
+                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
+                            </script>
+                            <script>
+                                document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                            </script>
+                            <button type="submit" id="btnPlaceOrder" value="Place Order" class="btn btn-success form-control">Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    }
+    else
+    {
+        <div class="backgroundWhiteBorder">No items added to the shopping cart...</div>
+    }
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+    <script>
+        $(function () {
+
+            var couponCode = document.getElementById("txtCouponCode").value;
+
+            if (couponCode.lenght > 0) {
+                document.getElementById('btnCoupon').style.display = 'none';
+                document.getElementById('btnRemoveCoupon').style.display = '';
+            } else {
+                document.getElementById('btnCoupon').style.display = '';
+                document.getElementById('btnRemoveCoupon').style.display = 'none';
+            }
+
+        });
+    </script>
+}
