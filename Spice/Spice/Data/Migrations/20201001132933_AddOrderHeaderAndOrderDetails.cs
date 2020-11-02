@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Spice.Data.Migrations
+namespace SpotBuddies.Data.Migrations
 {
     public partial class AddOrderHeaderAndOrderDetails : Migration
     {

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>aspnet-Spice-762188F3-7A05-4042-8170-D4A865269F48</UserSecretsId>
+    <UserSecretsId>aspnet-SpotBuddies-762188F3-7A05-4042-8170-D4A865269F48</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

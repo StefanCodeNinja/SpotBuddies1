@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Spice.Models
+namespace SpotBuddies.Models
 {
     public class MenuItem
     {

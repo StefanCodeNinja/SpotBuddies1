@@ -1,6 +1,6 @@
 using System;
 
-namespace Spice.Models
+namespace SpotBuddies.Models
 {
     public class ErrorViewModel
     {

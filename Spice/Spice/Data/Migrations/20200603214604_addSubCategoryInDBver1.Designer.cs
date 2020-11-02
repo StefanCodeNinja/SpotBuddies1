@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Spice.Data;
+using SpotBuddies.Data;
 
-namespace Spice.Data.Migrations
+namespace SpotBuddies.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200603214604_addSubCategoryInDBver1")]
@@ -221,7 +221,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Spice.Models.Category", b =>
+            modelBuilder.Entity("SpotBuddies.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -237,7 +237,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Spice.Models.SubCategory", b =>
+            modelBuilder.Entity("SpotBuddies.Models.SubCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -309,9 +309,9 @@ namespace Spice.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Spice.Models.SubCategory", b =>
+            modelBuilder.Entity("SpotBuddies.Models.SubCategory", b =>
                 {
-                    b.HasOne("Spice.Models.Category", "Category")
+                    b.HasOne("SpotBuddies.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

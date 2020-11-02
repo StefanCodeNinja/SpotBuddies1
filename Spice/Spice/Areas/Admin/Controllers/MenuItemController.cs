@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
-using Spice.Data;
-using Spice.Models.ViewModels;
-using Spice.Utility;
+using SpotBuddies.Data;
+using SpotBuddies.Models.ViewModels;
+using SpotBuddies.Utility;
 
-namespace Spice.Areas.Admin.Controllers
+namespace SpotBuddies.Areas.Admin.Controllers
 {
     [Authorize(Roles = SD.ManagerUser)]
     [Area("Admin")]

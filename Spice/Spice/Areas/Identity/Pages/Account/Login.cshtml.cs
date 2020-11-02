@@ -11,13 +11,13 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Spice.Data;
+using SpotBuddies.Data;
 using Microsoft.EntityFrameworkCore;
-using Spice.Models;
+using SpotBuddies.Models;
 using Microsoft.AspNetCore.Http;
-using Spice.Utility;
+using SpotBuddies.Utility;
 
-namespace Spice.Areas.Identity.Pages.Account
+namespace SpotBuddies.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel

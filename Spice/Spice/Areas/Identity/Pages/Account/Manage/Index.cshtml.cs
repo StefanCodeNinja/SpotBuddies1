@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Spice.Data;
-using Spice.Models;
+using SpotBuddies.Data;
+using SpotBuddies.Models;
 
-namespace Spice.Areas.Identity.Pages.Account.Manage
+namespace SpotBuddies.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {

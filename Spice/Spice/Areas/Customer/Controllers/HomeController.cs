@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Spice.Data;
-using Spice.Models;
-using Spice.Models.ViewModels;
-using Spice.Utility;
+using SpotBuddies.Data;
+using SpotBuddies.Models;
+using SpotBuddies.Models.ViewModels;
+using SpotBuddies.Utility;
 
-namespace Spice.Controllers
+namespace SpotBuddies.Controllers
 {
     [Area("Customer")]
     public class HomeController : Controller

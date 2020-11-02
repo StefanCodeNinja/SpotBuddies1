@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Spice.Data;
-using Spice.Utility;
+using SpotBuddies.Data;
+using SpotBuddies.Utility;
 
-namespace Spice.Areas.Admin.Controllers
+namespace SpotBuddies.Areas.Admin.Controllers
 {
     [Authorize(Roles = SD.ManagerUser)]
     [Area("Admin")]

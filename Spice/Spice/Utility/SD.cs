@@ -1,10 +1,10 @@
-﻿using Spice.Models;
+﻿using SpotBuddies.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Spice.Utility
+namespace SpotBuddies.Utility
 {
     public static class SD
     {

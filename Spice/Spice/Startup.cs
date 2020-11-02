@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using Spice.Data;
+using SpotBuddies.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Spice.Services;
+using SpotBuddies.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Spice.Utility;
+using SpotBuddies.Utility;
 using Stripe;
 
-namespace Spice
+namespace SpotBuddies
 {
     public class Startup
     {

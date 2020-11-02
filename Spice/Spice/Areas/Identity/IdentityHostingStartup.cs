@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Spice.Data;
+using SpotBuddies.Data;
 
-[assembly: HostingStartup(typeof(Spice.Areas.Identity.IdentityHostingStartup))]
-namespace Spice.Areas.Identity
+[assembly: HostingStartup(typeof(SpotBuddies.Areas.Identity.IdentityHostingStartup))]
+namespace SpotBuddies.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

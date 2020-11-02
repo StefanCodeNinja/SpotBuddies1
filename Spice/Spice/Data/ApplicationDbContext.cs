@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Spice.Models;
+using SpotBuddies.Models;
 
-namespace Spice.Data
+namespace SpotBuddies.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

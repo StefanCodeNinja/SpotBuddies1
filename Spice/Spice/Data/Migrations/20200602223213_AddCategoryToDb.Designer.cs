@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Spice.Data;
+using SpotBuddies.Data;
 
-namespace Spice.Data.Migrations
+namespace SpotBuddies.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200602223213_AddCategoryToDb")]
@@ -221,7 +221,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Spice.Models.Category", b =>
+            modelBuilder.Entity("SpotBuddies.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Spice.Data;
+using SpotBuddies.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Spice.ViewComponents
+namespace SpotBuddies.ViewComponents
 {
     public class UserNameViewComponent : ViewComponent
     {

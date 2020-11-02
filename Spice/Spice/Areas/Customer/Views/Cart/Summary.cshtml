@@ -1,9 +1,9 @@
-﻿@model Spice.Models.ViewModels.OrderDetailsCart
+﻿@model SpotBuddies.Models.ViewModels.OrderDetailsCart
 @using Microsoft.Extensions.Options
 
 @*insert spripe setting into the this page*@
 
-@inject IOptions<Spice.Utility.StripeSettings> Stripe
+@inject IOptions<SpotBuddies.Utility.StripeSettings> Stripe
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -192,7 +192,7 @@
                             <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="@Stripe.Value.PublishableKey"
                                     data-amount="@OrderTotalForStripe"
-                                    data-name="Spice Rest"
+                                    data-name="SpotBuddies Rest"
                                     data-lable="Place Order"
                                     data-description="Good Food, Good Mood."
                                     data-locale="auto"

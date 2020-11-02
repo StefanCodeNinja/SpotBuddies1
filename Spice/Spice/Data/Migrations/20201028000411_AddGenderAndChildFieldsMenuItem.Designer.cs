@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Spice.Data;
+using SpotBuddies.Data;
 
-namespace Spice.Data.Migrations
+namespace SpotBuddies.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20201028000411_AddGenderAndChildFieldsMenuItem")]
@@ -223,7 +223,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Spice.Models.Category", b =>
+            modelBuilder.Entity("SpotBuddies.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,7 +239,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Spice.Models.Coupon", b =>
+            modelBuilder.Entity("SpotBuddies.Models.Coupon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -271,7 +271,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("Coupon");
                 });
 
-            modelBuilder.Entity("Spice.Models.Image", b =>
+            modelBuilder.Entity("SpotBuddies.Models.Image", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -294,7 +294,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("Image");
                 });
 
-            modelBuilder.Entity("Spice.Models.MenuItem", b =>
+            modelBuilder.Entity("SpotBuddies.Models.MenuItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -377,7 +377,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("MenuItem");
                 });
 
-            modelBuilder.Entity("Spice.Models.OrderDetails", b =>
+            modelBuilder.Entity("SpotBuddies.Models.OrderDetails", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -411,7 +411,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("Spice.Models.OrderHeader", b =>
+            modelBuilder.Entity("SpotBuddies.Models.OrderHeader", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -493,7 +493,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("OrderHeader");
                 });
 
-            modelBuilder.Entity("Spice.Models.ShoppingCart", b =>
+            modelBuilder.Entity("SpotBuddies.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -514,7 +514,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("ShoppingCart");
                 });
 
-            modelBuilder.Entity("Spice.Models.SubCategory", b =>
+            modelBuilder.Entity("SpotBuddies.Models.SubCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -535,7 +535,7 @@ namespace Spice.Data.Migrations
                     b.ToTable("SubCategory");
                 });
 
-            modelBuilder.Entity("Spice.Models.ApplicationUser", b =>
+            modelBuilder.Entity("SpotBuddies.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -695,55 +695,55 @@ namespace Spice.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Spice.Models.Image", b =>
+            modelBuilder.Entity("SpotBuddies.Models.Image", b =>
                 {
-                    b.HasOne("Spice.Models.MenuItem", null)
+                    b.HasOne("SpotBuddies.Models.MenuItem", null)
                         .WithMany("Images")
                         .HasForeignKey("MenuItemId");
                 });
 
-            modelBuilder.Entity("Spice.Models.MenuItem", b =>
+            modelBuilder.Entity("SpotBuddies.Models.MenuItem", b =>
                 {
-                    b.HasOne("Spice.Models.Category", "Category")
+                    b.HasOne("SpotBuddies.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Spice.Models.SubCategory", "SubCategory")
+                    b.HasOne("SpotBuddies.Models.SubCategory", "SubCategory")
                         .WithMany()
                         .HasForeignKey("SubCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Spice.Models.OrderDetails", b =>
+            modelBuilder.Entity("SpotBuddies.Models.OrderDetails", b =>
                 {
-                    b.HasOne("Spice.Models.MenuItem", "MenuItem")
+                    b.HasOne("SpotBuddies.Models.MenuItem", "MenuItem")
                         .WithMany()
                         .HasForeignKey("MenuItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Spice.Models.OrderHeader", "OrderHeader")
+                    b.HasOne("SpotBuddies.Models.OrderHeader", "OrderHeader")
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Spice.Models.OrderHeader", b =>
+            modelBuilder.Entity("SpotBuddies.Models.OrderHeader", b =>
                 {
-                    b.HasOne("Spice.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("SpotBuddies.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Spice.Models.SubCategory", b =>
+            modelBuilder.Entity("SpotBuddies.Models.SubCategory", b =>
                 {
-                    b.HasOne("Spice.Models.Category", "Category")
+                    b.HasOne("SpotBuddies.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)

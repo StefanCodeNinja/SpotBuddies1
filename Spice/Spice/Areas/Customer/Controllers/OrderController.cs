@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Spice.Data;
-using Spice.Models;
-using Spice.Models.ViewModels;
-using Spice.Utility;
+using SpotBuddies.Data;
+using SpotBuddies.Models;
+using SpotBuddies.Models.ViewModels;
+using SpotBuddies.Utility;
 
-namespace Spice.Areas.Customer.Controllers
+namespace SpotBuddies.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class OrderController : Controller

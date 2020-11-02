@@ -1,10 +1,10 @@
-﻿using Spice.Models.ViewModels;
+﻿using SpotBuddies.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Spice.Models.ViewModels
+namespace SpotBuddies.Models.ViewModels
 {
     public class OrderListViewModel
     {
